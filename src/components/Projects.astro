@@ -3,23 +3,26 @@ const projects = [
   {
     title: "Best Lesson Ever",
     description: "Music lessons for kids ages 5–18. Building the best studio experience in the Houston area.",
-    image: "/images/brian-stage-powerstance.jpg",
+    image: "/images/ble-logo.png",
     link: "https://bestlessonever.com",
     tag: "Studio",
+    imgClass: "object-contain bg-dark p-8",
   },
   {
     title: "Music",
     description: "15+ years as a professional musician. Still booking shows, still making noise.",
     image: "/images/brian-guitar-pose.jpg",
-    link: "#",
+    link: "https://open.spotify.com/artist/4HFMMY33b8jYQ951iAwRkr",
     tag: "Music",
+    imgClass: "object-cover",
   },
   {
     title: "AI Builds",
     description: "Building tools with AI — autonomous agents, Practice Challenge app, and whatever comes next.",
     image: "/images/brian-couch-smirk.jpg",
-    link: "#",
+    link: null,
     tag: "AI / Tech",
+    imgClass: "object-cover",
   },
 ];
 ---
@@ -28,18 +31,24 @@ const projects = [
     <p class="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Projects</p>
     <h2 class="text-4xl md:text-5xl font-black mb-12">What I'm Working On</h2>
     <div class="grid md:grid-cols-3 gap-8">
-      {projects.map((p) => (
-        <a href={p.link} target={p.link.startsWith('http') ? '_blank' : undefined} rel={p.link.startsWith('http') ? 'noopener' : undefined} class="group block bg-card border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-all duration-300">
-          <div class="overflow-hidden aspect-video">
-            <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-6">
-            <span class="text-accent text-xs uppercase tracking-widest font-semibold">{p.tag}</span>
-            <h3 class="text-2xl font-bold mt-2 mb-3">{p.title}</h3>
-            <p class="text-gray-400">{p.description}</p>
-          </div>
-        </a>
-      ))}
+      {projects.map((p) => {
+        const isLink = p.link && p.link !== '#';
+        const Tag = isLink ? 'a' : 'div';
+        const linkProps = isLink ? { href: p.link, target: '_blank', rel: 'noopener' } : {};
+        return (
+          <a href={p.link || undefined} target={isLink ? '_blank' : undefined} rel={isLink ? 'noopener' : undefined} class={`group block bg-card border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-all duration-300 ${!isLink ? 'cursor-default opacity-80' : ''}`}>
+            <div class="overflow-hidden aspect-video">
+              <img src={p.image} alt={p.title} class={`w-full h-full ${p.imgClass || 'object-cover'} group-hover:scale-105 transition-transform duration-500`} />
+            </div>
+            <div class="p-6">
+              <span class="text-accent text-xs uppercase tracking-widest font-semibold">{p.tag}</span>
+              <h3 class="text-2xl font-bold mt-2 mb-3">{p.title}</h3>
+              <p class="text-gray-400">{p.description}</p>
+              {!isLink && <p class="text-gray-600 text-sm mt-2 italic">Coming soon</p>}
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>

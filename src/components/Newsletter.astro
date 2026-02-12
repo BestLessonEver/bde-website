@@ -5,9 +5,30 @@
     <p class="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Newsletter</p>
     <h2 class="text-4xl md:text-5xl font-black mb-6">Join the Ride</h2>
     <p class="text-gray-300 text-lg mb-10 max-w-xl mx-auto">I share what I'm building, breaking, and learning. No spam. Just real talk from someone doing all the things.</p>
-    <form action="#" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-      <input type="email" placeholder="your@email.com" required class="flex-1 px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" />
-      <button type="submit" class="bg-accent text-dark px-8 py-4 font-bold uppercase tracking-wider rounded hover:bg-orange-400 transition whitespace-nowrap">Subscribe</button>
-    </form>
+    
+    <div id="subscribe-form">
+      <form action="/api/subscribe" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+        <input type="email" name="email" placeholder="your@email.com" required class="flex-1 px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" />
+        <button type="submit" class="bg-accent text-dark px-8 py-4 font-bold uppercase tracking-wider rounded hover:bg-orange-400 transition whitespace-nowrap">Subscribe</button>
+      </form>
+    </div>
+
+    <div id="subscribe-success" class="hidden max-w-lg mx-auto">
+      <div class="bg-accent/10 border border-accent/30 rounded-xl px-8 py-6">
+        <p class="text-accent text-xl font-bold">You're in! 🎉</p>
+        <p class="text-gray-300 mt-2">Thanks for subscribing. Real talk coming your way soon.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  if (window.location.search.includes('subscribed=true')) {
+    const form = document.getElementById('subscribe-form');
+    const success = document.getElementById('subscribe-success');
+    if (form) form.classList.add('hidden');
+    if (success) success.classList.remove('hidden');
+    // Clean up URL
+    window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+  }
+</script>
