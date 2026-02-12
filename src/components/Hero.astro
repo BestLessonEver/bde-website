@@ -1,13 +1,16 @@
 ---
 ---
-<section class="relative min-h-screen flex flex-col justify-center overflow-hidden">
+<section class="relative min-h-screen flex flex-col overflow-hidden">
   <!-- Background image with overlay -->
   <div class="absolute inset-0">
-    <img src="/images/brian-headshot-moody.jpg" alt="" class="w-full h-full object-cover object-top" />
-    <div class="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/50 to-dark"></div>
+    <img src="/images/brian-headshot-moody.jpg" alt="" class="w-full h-full object-cover object-[center_20%]" />
+    <div class="absolute inset-0 bg-gradient-to-b from-dark/20 via-dark/30 to-dark"></div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
+  <!-- Spacer pushes content down on mobile so face is visible -->
+  <div class="flex-1 md:hidden"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 md:pt-32 md:pb-16 md:my-auto">
     <p class="text-accent uppercase tracking-[0.3em] text-sm md:text-base font-semibold mb-4">Welcome to the chaos</p>
     <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tight">
       BRIAN<br/>DOES<br/>
@@ -20,7 +23,7 @@
   </div>
 
   <!-- Scrolling ticker -->
-  <div class="relative z-10 ticker-wrap border-t border-b border-white/10 py-4 mt-auto">
+  <div class="relative z-10 ticker-wrap border-t border-b border-white/10 py-4">
     <div class="ticker-track">
       <span>Musician</span><span>•</span>
       <span>Studio Owner</span><span>•</span>
