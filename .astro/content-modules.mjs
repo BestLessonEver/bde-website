@@ -4,6 +4,7 @@ export default new Map([
 ["src/content/blog/chaos-management.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fchaos-management.mdx&astroContentModuleFlag=true")],
 ["src/content/blog/musician-to-ai-builder.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fmusician-to-ai-builder.mdx&astroContentModuleFlag=true")],
 ["src/content/blog/stage-to-startup.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fstage-to-startup.mdx&astroContentModuleFlag=true")],
+["src/content/blog/the-practice-problem.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fthe-practice-problem.mdx&astroContentModuleFlag=true")],
 ["src/content/blog/why-i-build-with-ai.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fwhy-i-build-with-ai.mdx&astroContentModuleFlag=true")],
-["src/content/blog/the-practice-problem.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fthe-practice-problem.mdx&astroContentModuleFlag=true")]]);
+["src/content/blog/when-ai-is-everywhere.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fwhen-ai-is-everywhere.mdx&astroContentModuleFlag=true")]]);
 		
