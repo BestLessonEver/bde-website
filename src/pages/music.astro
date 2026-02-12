@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+
+const videos = [
+  { id: 'Gn1f80Mq9lg', title: 'I Believe In A Thing Called Love - The Darkness (cover)' },
+  { id: 'CuoOg7IJge4', title: 'Ginuwine - PONY (cover)' },
+  { id: '__tqwG6jPbw', title: "What's Up - 4 Non Blondes (live looping cover)" },
+  { id: 'UxRz9NF0rNU', title: 'Me, A Machine' },
+  { id: 'Wk_de620P2k', title: 'Outkast - Miss Jackson (loop cover)' },
+  { id: '8YAGKlge2SM', title: 'Fascinating (Official Music Video)' },
+];
+---
+<BaseLayout title="Music | Brian Does Everything" description="Book Brian Carrion for your next event. Live looping, covers, originals - one man, one machine, all the vibes.">
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/brian-guitar-pose.jpg" alt="Brian performing" class="w-full h-full object-cover object-top" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/60 to-dark"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
+      <p class="text-accent uppercase tracking-[0.3em] text-sm font-semibold mb-4">Live Music</p>
+      <h1 class="text-5xl sm:text-7xl md:text-8xl font-black leading-[0.9] tracking-tight">
+        ONE MAN.<br/><span class="text-accent">ONE MACHINE.</span>
+      </h1>
+      <p class="text-gray-300 text-xl mt-6 max-w-xl">Live looper, multi-instrumentalist, and all-around performer. Upbeat, quirky, and fun. From corporate events to backyard parties.</p>
+      <div class="mt-8">
+        <a href="#book" class="bg-accent text-dark px-8 py-4 text-lg font-bold uppercase tracking-wider hover:bg-orange-400 transition rounded inline-block">Book Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Watch</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-12">See It Live</h2>
+      
+      <!-- Featured video -->
+      <div class="mb-12">
+        <div class="aspect-video rounded-xl overflow-hidden">
+          <iframe
+            src={`https://www.youtube.com/embed/${videos[0].id}`}
+            title={videos[0].title}
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Video grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+        {videos.slice(1).map((v) => (
+          <div class="aspect-video rounded-xl overflow-hidden">
+            <iframe
+              src={`https://www.youtube.com/embed/${v.id}`}
+              title={v.title}
+              class="w-full h-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        ))}
+      </div>
+
+      <!-- Social links -->
+      <div class="mt-12 flex flex-wrap gap-6 justify-center">
+        <a href="https://www.youtube.com/@itsbriancarrion" target="_blank" rel="noopener" class="text-gray-400 hover:text-accent transition text-lg font-semibold">📺 YouTube</a>
+        <a href="https://www.instagram.com/mrbriancarrion" target="_blank" rel="noopener" class="text-gray-400 hover:text-accent transition text-lg font-semibold">📸 Instagram</a>
+        <a href="https://open.spotify.com/artist/4HFMMY33b8jYQ951iAwRkr" target="_blank" rel="noopener" class="text-gray-400 hover:text-accent transition text-lg font-semibold">🎧 Spotify</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section id="book" class="py-24 md:py-32 bg-card/50">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="text-accent uppercase tracking-[0.2em] text-sm font-semibold mb-4">Book Brian</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-6">Let's Make Some Noise</h2>
+      <p class="text-gray-300 text-lg mb-10">Corporate events, private parties, weddings, restaurants, festivals - you name it. Fill out the form and I'll get back to you.</p>
+
+      <form action="/api/booking" method="POST" class="space-y-6">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Your Name</label>
+            <input type="text" id="name" name="name" required class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="Jane Smith" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Email</label>
+            <input type="email" id="email" name="email" required class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="jane@example.com" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label for="date" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Event Date</label>
+            <input type="date" id="date" name="date" class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" />
+          </div>
+          <div>
+            <label for="event_type" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Event Type</label>
+            <select id="event_type" name="event_type" class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white focus:outline-none focus:border-accent transition">
+              <option value="">Select one...</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="wedding">Wedding</option>
+              <option value="private_party">Private Party</option>
+              <option value="restaurant">Restaurant / Bar</option>
+              <option value="festival">Festival</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="venue" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Venue / Location</label>
+          <input type="text" id="venue" name="venue" class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="Venue name and city" />
+        </div>
+        <div>
+          <label for="details" class="block text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Tell Me About Your Event</label>
+          <textarea id="details" name="details" rows="4" class="w-full px-6 py-4 bg-dark border border-white/10 rounded text-white placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none" placeholder="What's the vibe? How many guests? Anything else I should know?"></textarea>
+        </div>
+        <button type="submit" class="bg-accent text-dark px-8 py-4 font-bold uppercase tracking-wider rounded hover:bg-orange-400 transition w-full sm:w-auto">Send Inquiry</button>
+      </form>
+
+      <div id="booking-success" class="hidden mt-8">
+        <div class="bg-accent/10 border border-accent/30 rounded-xl px-8 py-6 text-center">
+          <p class="text-accent text-xl font-bold">Inquiry sent! 🎸</p>
+          <p class="text-gray-300 mt-2">I'll get back to you soon. Let's make it happen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    if (window.location.search.includes('booked=true')) {
+      const form = document.querySelector('form[action="/api/booking"]');
+      const success = document.getElementById('booking-success');
+      if (form) form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+    }
+  </script>
+</BaseLayout>
