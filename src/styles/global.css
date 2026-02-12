@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark text-white font-sans;
+  }
+}
+
+/* Scrolling ticker */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  @apply overflow-hidden whitespace-nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker 20s linear infinite;
+}
+
+.ticker-track span {
+  @apply text-2xl md:text-4xl font-bold uppercase tracking-wider px-6;
+  color: rgba(249, 115, 22, 0.6);
+}
+
+/* Prose for blog */
+.prose h1 { @apply text-4xl font-black text-white mb-6; }
+.prose h2 { @apply text-2xl font-bold text-accent mt-10 mb-4; }
+.prose p { @apply text-gray-300 leading-relaxed mb-4 text-lg; }
+.prose strong { @apply text-white; }
+.prose ol { @apply list-decimal list-inside text-gray-300 mb-4 space-y-2; }
+.prose ul { @apply list-disc list-inside text-gray-300 mb-4 space-y-2; }
+.prose a { @apply text-accent underline hover:text-orange-400; }

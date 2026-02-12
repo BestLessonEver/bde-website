@@ -1,0 +1,17 @@
+---
+import '../styles/global.css';
+const { title = "Brian Does Everything", description = "Musician. Studio Owner. AI Builder. Dad. Entrepreneur." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen">
+    <slot />
+  </body>
+</html>
